@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<section class="section-pagetop bg">
+  <div class="container">
+    <h2 class="title-page">CATEGORY</h2>
+  </div>
+  <!-- container //  -->
+</section>
+
+<section class="section-content padding-y">
+  <div class="container">
+    <div class="row">
+      <aside class="col-md-3">
+       
+
+        {% comment %} <header>
+          <a class="nav-link iba" data-bs-toggle="collapse" href="#sizeDropdown" role="button" aria-expanded="false" aria-controls="sizeDropdown">
+            Sizes <i class="fas fa-caret-down icon"></i>
+          </a>
+        </header>
+        <div class="collapse" id="sizeDropdown">
+          <div class="card-body">
+            <div class="d-flex justify-content-center" style="gap: 20px">
+              <div class="form-group">
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> XS </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> SM </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> LG </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> XL </span>
+                </label>
+
+                <label class="checkbox-btn">
+                  <input type="checkbox">
+                  <span class="btn btn-light"> XXL </span>
+                </label>
+              </div>
+            
+            </div>
+          </div>
+        </div> {% endcomment %}
+
+        <header>
+          <a class="nav-link iba" data-bs-toggle="collapse" href="#sizeDropdown" role="button" aria-expanded="false" aria-controls="sizeDropdown">
+            Sizes <i class="fas fa-caret-down icon"></i>
+          </a>
+        </header>
+        <div class="collapse" id="sizeDropdown">
+          <div class="card-body">
+            <div class="d-flex justify-content-center" style="gap: 15px;">
+              <div class="form-group">
+                <!-- Checkbox Buttons for Sizes -->
+                <label class="tickbox">
+                  <input type="checkbox">
+                  <span class="btn btn-light">XS</span>
+                </label>
+        
+                <label class="tickbox">
+                  <input type="checkbox">
+                  <span class="btn btn-light">SM</span>
+                </label>
+        
+                <label class="tickbox">
+                  <input type="checkbox">
+                  <span class="btn btn-light">LG</span>
+                </label>
+        
+                <label class="tickbox">
+                  <input type="checkbox">
+                  <span class="btn btn-light">XL</span>
+                </label>
+        
+                <label class="tickbox">
+                  <input type="checkbox">
+                  <span class="btn btn-light">XXL</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <header>
+          <a class="nav-link iba" data-bs-toggle="collapse" href="#priceDropdown" role="button" aria-expanded="false" aria-controls="priceDropdown">
+            Prices <i class="fas fa-caret-down icon"></i>
+          </a>
+        </header>
+        <div class="collapse" id="priceDropdown">
+          <div class="card-body">
+            <div class="d-flex justify-content-center" style="gap: 40px">
+              <div class="form-group">
+                <label class="label">Min</label>
+                <select class="form-control">
+                  <option value="0">$0</option>
+                  <option value="50">$50</option>
+                  <option value="100">$100</option>
+                  <option value="150">$150</option>
+                  <option value="200">$200</option>
+                  <option value="500">$500</option>
+                  <option value="1000">$1000</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <span class="label">Max</span>
+                <select class="form-control">
+                  <option value="50">$50</option>
+                  <option value="100">$100</option>
+                  <option value="150">$150</option>
+                  <option value="200">$200</option>
+                  <option value="500">$500</option>
+                  <option value="1000">$1000</option>
+                  <option value="2000">$2000+</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button class="btn w-20 btn-danger">Apply</button>
+        </div>
+
+        <!-- card.// -->
+      </aside>
+      <!-- col.// -->
+      <main class="col-md-9">
+        <header class="border-bottom mb-4 pb-3">
+          <div class="form-inline">
+            <span class="mr-md-auto">{{product_count}} Items found </span>
+          </div>
+        </header>
+        <!-- sect-heading -->
+
+        <div class="row">
+          {%for product in products %}
+          <div class="col-6 col-md-4 mb-4">
+              <figure class="card card-product-grid">
+                  <div class="img-wrap">
+                      <a href="{{product.get_url}}">
+                        <img src="{{product.images.url}}" class="card-img" />
+                      </a>
+                  </div>
+                  <figcaption class="info-wrap">
+                      <div class="fix-height">
+                          <a href="{{ product.get_url }}" class="title">{{ product.product_name}}</a>
+                          <div class="price-wrap mt-2">
+                              <span class="price">${{ product.price}}</span>
+                          </div>
+                      </div>
+                      <a href="#" class="btn btn-block btn-primary">Add to cart</a>
+                  </figcaption>
+              </figure>
+          </div>
+          {% endfor%}
+          <!-- Repeat for each product card -->
+        </div>
+
+        <!-- row end.// -->
+
+        <nav class="mt-4" aria-label="Page navigation sample">
+          <ul class="pagination">
+            <li class="page-item disabled">
+              <a class="page-link" href="#">Previous</a>
+            </li>
+            <li class="page-item active">
+              <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+      </main>
+      <!-- col.// -->
+    </div>
+  </div>
+  <!-- container .//  -->
+</section>
+
+{% endblock %}
