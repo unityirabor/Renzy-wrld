@@ -402,14 +402,14 @@
 
     <div class="search-popup">
       <div class="search-popup-container">
-        <form role="search" method="get" class="form-group" action="">
+        <form role="search" method="GET" class="form-group" action="{% url 'search' %}">
           <input
             type="search"
             id="search-form"
             class="form-control border-0 border-bottom"
             placeholder="Type and press enter"
             value=""
-            name="s"
+            name="keyword"
           />
           <button
             type="submit"
@@ -447,6 +447,7 @@
       </div>
     </div>
 
+    <!--cart-->
     <div
       class="offcanvas offcanvas-end"
       data-bs-scroll="true"
@@ -501,7 +502,40 @@
           </button>
         </div>
       </div>
-    </div>
+    </div> 
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" tabindex="-1" id="offcanvasCart" aria-labelledby="My Cart">
+      <div class="offcanvas-header justify-content-center">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="order-md-last">
+          <h4 class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-primary">Your cart</span>
+            <span class="badge bg-primary rounded-pill">{{ cart|length }}</span>
+          </h4>
+          <ul class="list-group mb-3">
+            {% for product_id, product_info in cart.items %}
+            <li class="list-group-item d-flex justify-content-between lh-sm">
+              <div class="d-flex">
+                <!-- Product Image -->
+                <img src="{{ product_info.image_url }}" alt="{{ product_info.product_name }}" class="cart-item-image">
+                <div class="ms-3">
+                  <h6 class="my-0">{{ product_info.product_name }}</h6>
+                  <small class="text-body-secondary">Brief description</small>
+                </div>
+              </div>
+              <span class="text-body-secondary">${{ product_info.price }} x {{ product_info.quantity }}</span>
+            </li>
+            {% endfor %}
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total (USD)</span>
+              <strong>${{ total }}</strong>
+            </li>
+          </ul>
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to Checkout</button>
+        </div>
+      </div>
+    </div> 
 
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-md px-0">
@@ -551,12 +585,18 @@
           </svg>Wishlist
         </a>
 
-        <a href="#" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
+        <a href="{% url 'cart'%}" class="mx-2">
+          <i class="fa fa-shopping-cart"></i>Cart
+          <span class="translate-middle badge rounded-pill bg-danger">{{cart_count}}</span>
+        </a>
+
+        {% comment %} <a href="{% url 'cart' %}" class="mx-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart"
           aria-controls="offcanvasCart">
           <svg width="24" height="24" viewBox="0 0 24 24">
             <use xlink:href="#cart"></use>
           </svg>Cart
-        </a>
+          <span class="badge badge-pill badge-danger notify">{{cart_count}}</span>
+        </a> {% endcomment %}
 
         <a href="#" class="mx-2">
           <svg width="24" height="24" viewBox="0 0 24 24">
@@ -604,7 +644,8 @@
               </li>
 
               <li class="nav-item"> 
-                <a href="{% url 'about' %}" class="nav-link">
+                <a href="#" class="nav-link"
+                  aria-controls="offcanvasCart">
                   About
                 </a>
               </li>
