@@ -154,7 +154,7 @@ nav{
        }
        .navbar-brand {
         position: absolute;
-          left: 90px;
+          left: 70px;
        }
        .nav-icons {
            display: inline-block;
@@ -204,17 +204,17 @@ nav{
            display: block;
        }
    
-       .navbar-brand {
+       /*.navbar-brand {
            order: 2; /* Center the brand logo */
-       }
+      /* }
    
        .hamburger-menu {
            order: 1; /* Place hamburger icon on the left */
-       }
+       /*}
    
        .nav-icons {
            order: 3; /* Place the search icon on the right */
-       }
+      /* }*/
    }
 
 .tickbox input[type="checkbox"] {
@@ -279,3 +279,27 @@ width: 100%; /* Prevents the button from being too wide */
 margin: 20px ; /* Center the button */
 display: block; /* Ensures centering */
 }
+
+/*@media (max-width: 390px) {
+    .navbar-brand img {
+        width:160px;
+        height:35px;
+        padding: auto !important;
+        padding-left: 20px;
+       
+       
+    }
+}*/
+
+@media (max-width: 390px) {
+    .navbar-brand {
+        margin: 0 auto !important; /* Centers the brand */
+        display: flex !important;  /* Ensures flexbox behavior */
+        justify-content: center !important; /* Centers horizontally */
+        align-items: center !important; /* Centers vertically */
+    }
+    .navbar-brand img {
+        height: 30px !important; /* Adjust size */
+    }
+}
+

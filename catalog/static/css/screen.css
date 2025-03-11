@@ -1,0 +1,77 @@
+/* 1. Devices with width 300px - 320px */
+@media (min-width: 300px) and (max-width: 320px) {
+       .navbar-toggler {
+           font-size: 0.8rem; /* Reduce hamburger size */
+       }
+       .navbar-brand img {
+           height: 30px; /* Reduce brand image size */
+       }
+       .small-screen-icons i {
+           font-size: 14px; /* Reduce search and cart icons */
+       }
+   }
+   
+   /* 2. Devices with width 321px - 390px */
+   @media (min-width: 321px) and (max-width: 390px) {
+       .navbar-toggler {
+           font-size: 0.9rem;
+       }
+       .navbar-brand img {
+           height: 35px;
+       }
+       .small-screen-icons i {
+           font-size: 16px;
+       }
+   }
+   
+   /* 3. Devices with width 391px - 540px */
+   @media (min-width: 391px) and (max-width: 540px) {
+       .navbar-toggler {
+           font-size: 1rem;
+       }
+       .navbar-brand img {
+           height: 38px;
+       }
+       .small-screen-icons i {
+           font-size: 18px;
+       }
+   }
+   
+   /* 4. Devices with width 541px - 575px */
+   @media (min-width: 541px) and (max-width: 575px) {
+       .navbar-toggler {
+           font-size: 1.1rem;
+       }
+       .navbar-brand img {
+           height: 40px;
+       }
+       .small-screen-icons i {
+           font-size: 20px;
+       }
+   }
+   
+   /* 5. Devices with width 576px - 765px */
+   @media (min-width: 576px) and (max-width: 765px) {
+       .navbar-brand img {
+           height: 45px;
+       }
+       .navbar-nav .nav-link {
+           font-size: 16px; /* Adjust menu size */
+       }
+       .large-screen-icons i {
+           font-size: 20px; /* Adjust icon size */
+       }
+   }
+   
+   /* 6. Devices with width 766px - 922px */
+   @media (min-width: 766px) and (max-width: 922px) {
+       .navbar-brand img {
+           height: 50px;
+       }
+       .navbar-nav .nav-link {
+           font-size: 18px;
+       }
+       .large-screen-icons i {
+           font-size: 22px;
+       }
+   }
